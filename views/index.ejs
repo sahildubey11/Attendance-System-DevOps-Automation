@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance System</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Student Attendance System</h1>
+
+<form action="/add" method="POST">
+
+<input type="text" name="name" placeholder="Student Name" required>
+
+<select name="status">
+  <option>Present</option>
+  <option>Absent</option>
+</select>
+
+<button type="submit">Add</button>
+
+</form>
+
+<table>
+
+<tr>
+  <th>Name</th>
+  <th>Status</th>
+</tr>
+
+<% records.forEach(record => { %>
+
+<tr>
+  <td><%= record.name %></td>
+  <td><%= record.status %></td>
+</tr>
+
+<% }) %>
+
+</table>
+
+</body>
+</html>
