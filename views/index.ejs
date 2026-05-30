@@ -1,43 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Attendance System</title>
+
   <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
 
-<h1>Student Attendance System</h1>
+  <div class="container">
 
-<form action="/add" method="POST">
+    <h1>📚 Student Attendance System</h1>
 
-<input type="text" name="name" placeholder="Student Name" required>
+    <form action="/add" method="POST">
 
-<select name="status">
-  <option>Present</option>
-  <option>Absent</option>
-</select>
+      <input
+        type="text"
+        name="name"
+        placeholder="Enter Student Name"
+        required
+      >
 
-<button type="submit">Add</button>
+      <select name="status">
 
-</form>
+        <option value="Present">Present</option>
+        <option value="Absent">Absent</option>
 
-<table>
+      </select>
 
-<tr>
-  <th>Name</th>
-  <th>Status</th>
-</tr>
+      <button type="submit">
+        Add Attendance
+      </button>
 
-<% records.forEach(record => { %>
+    </form>
 
-<tr>
-  <td><%= record.name %></td>
-  <td><%= record.status %></td>
-</tr>
+    <table>
 
-<% }) %>
+      <tr>
+        <th>ID</th>
+        <th>Student Name</th>
+        <th>Status</th>
+      </tr>
 
-</table>
+      <% records.forEach(record => { %>
+
+        <tr>
+
+          <td><%= record.id %></td>
+
+          <td><%= record.name %></td>
+
+          <td class="<%= record.status === 'Present'
+            ? 'status-present'
+            : 'status-absent' %>">
+
+            <%= record.status %>
+
+          </td>
+
+        </tr>
+
+      <% }) %>
+
+    </table>
+
+  </div>
 
 </body>
 </html>
